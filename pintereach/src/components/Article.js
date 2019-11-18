@@ -1,81 +1,52 @@
-import React, { useState } from "react";
-import { Modal, Form, Input, Button } from "antd";
+import React from "react";
+import styled from "styled-components";
+import { RemoveCircleOutline } from "styled-icons/material/RemoveCircleOutline";
+import axios from "axios";
 
-export default function Article(props) {
-  const { hideModal, addArticle, modalDisplay } = props;
+const RemoveCircleOutlineRed = styled(RemoveCircleOutline)`
+  color: red;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  padding-left: 5px;
+  float: right;
+`;
 
-  const initialFormState = {
-    articleid: "",
-    link: "",
-    title: "",
-    summary: "",
-    board: ""
+class ArticleFeed extends React.Component {
+  state = {
+    deletingArticle: null
   };
 
-  // State to handle content of article form
-
-  const [article, setArticle] = useState(initialFormState);
-
-  const handleInputChange = e => {
-    const { name, value } = e.target;
-    setArticle({ ...article, [name]: value });
-    console.log(article);
+  deleteArticle = (id, user_id) => {
+    this.setState({ deletingArticle: id });
+    this.props.deleteArticle(id, user_id);
   };
+  render() {
+    return (
+      <div className="articles">
+        {this.props.articles.map(article => (
+          <div className="article-card" key={article.id}>
+            <div className="title">
+              <h3>{article.title}</h3>
+              <p>@{article.postedBy}</p>
+            </div>
+            <a
+              href={article.link}
+              target="_blank"
+              without
+              rel="noopener noreferrer"
+            >
+              {article.link}
+            </a>
 
-  const clickAddArticle = e => {
-    e.preventDefault();
-    addArticle(article);
-    setArticle(initialFormState);
-  };
-
-  return (
-    <>
-      <Modal
-        title="Add New Article"
-        visible={modalDisplay.visible}
-        onCancel={hideModal}
-        footer={[
-          <Button
-            form="articleForm"
-            key="submit"
-            htmlType="submit"
-            onClick={clickAddArticle}
-          >
-            Add Article
-          </Button>
-        ]}
-      >
-        <Form>
-          <label htmlFor="URL">URL</label>
-          <Input
-            type="text"
-            name="link"
-            value={article.link}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="title">Title</label>
-          <Input
-            type="text"
-            name="title"
-            value={article.title}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="summary">Summary</label>
-          <Input
-            type="text"
-            name="summary"
-            value={article.summary}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="category">Tags</label>
-          <Input
-            type="text"
-            name="category"
-            value={article.category}
-            onChange={handleInputChange}
-          />
-        </Form>
-      </Modal>
-    </>
-  );
+            <RemoveCircleOutlineRed
+              onClick={() => this.deleteArticle(article.id, article.userid)}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
 }
+
+export default ArticleFeed;

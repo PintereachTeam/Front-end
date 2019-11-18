@@ -5,7 +5,7 @@ import axios from "axios";
 // EXPORTS
 
 export const LOGIN_START = "LOGIN_START";
-export const SIGNUP_START = "SIGNUP_START";
+export const REGISTER_START = "REGISTER_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
 // LOGIN ACTION '.POST'
@@ -24,8 +24,8 @@ export const login = creds => dispatch => {
 
 // SIGNUP ACTION '.POST'
 
-export const signup = creds => dispatch => {
-  dispatch({ type: SIGNUP_START });
+export const register = creds => dispatch => {
+  dispatch({ type: REGISTER_START });
   return axios
     .post("https://pintereach-backend.herokuapp.com/register", creds) //  <- ADD PATH
     .then(res => {

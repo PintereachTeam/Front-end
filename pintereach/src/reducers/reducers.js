@@ -3,7 +3,7 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  SIGNUP_START
+  REGISTER_START
 } from "../actions/actions.js";
 
 // STATE
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loggingIn: true
       };
-    case SIGNUP_START:
+    case REGISTER_START:
       return {
         ...state,
         loggingIn: true,
