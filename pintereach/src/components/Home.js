@@ -3,7 +3,7 @@ import axios from "axios";
 import { Button, Layout, Icon, PageHeader, BackTop } from "antd";
 // import SearchForm from './SearchForm';
 
-import ArticleList from "./ArticleList";
+import ArticleList from "./ArticlesList";
 import ArticleModal from "./ArticleModal";
 import Menu from "./Menu";
 
@@ -14,9 +14,6 @@ const Home = () => {
 
   // State to manage what is displayed on ArticleList
   const [originalArticles, setOriginalArticles] = useState([]);
-
-  // console.log('1: articles === originalArticles', originalArticles === articles);
-  // console.log(displayedArticles)
 
   // State for Menu, ArticleModal
   const [menuDisplay, setMenuDisplay] = useState({ visible: false });
@@ -51,25 +48,17 @@ const Home = () => {
     // console.log(articles)
   };
 
-  // console.log(articles);
-
   // Card Functions
 
   const deleteArticle = id => {
     console.log(`delete clicked`);
     setArticles(articles.filter(article => article.articleid !== id));
-
-    // setDisplayedArticles(articles)
-    // POST updated article list
   };
 
   // Update for articleDisplay
   const setMustRead = articleid => {
-    // console.log(`mustRead clicked`);
-    // console.log(articleid)
     const idx = articles.findIndex(entry => entry.articleid === articleid);
-    // console.log(index)
-    // articles[index].mustRead = !articles[index].mustRead;
+
     const updatedArticleList = [...articles];
     updatedArticleList[idx].mustRead = !updatedArticleList[idx].mustRead;
     setArticles(updatedArticleList);
@@ -107,8 +96,6 @@ const Home = () => {
       .then(response => {
         setArticles([...response.data]);
         setOriginalArticles([...response.data]);
-        // setDisplayedArticles to articles
-        // setDisplayedArticles(response.data);
       })
       .catch(error => {
         console.log(error.message);
@@ -147,13 +134,12 @@ const Home = () => {
       <Content
         style={{
           display: "flex",
-          paddingBottom: "10rem",
+          paddingBottom: "15rem",
           justifyContent: "center"
         }}
       >
         <div>
           <BackTop />
-          <strong style={{ color: "rgba(64, 64, 64, 0.6)" }}> </strong>
         </div>
 
         <ArticleList

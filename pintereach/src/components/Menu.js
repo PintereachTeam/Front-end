@@ -11,8 +11,8 @@ export default function Menu(props) {
     setApiUrl
   } = props;
 
-  const categories = articles
-    .map(article => article.category)
+  const board = articles
+    .map(article => article.board)
     .reduce((acc, currValue) => {
       acc[currValue] ? acc[currValue]++ : (acc[currValue] = 1);
       return acc;
@@ -52,31 +52,33 @@ export default function Menu(props) {
           margin: "2rem 0"
         }}
       >
-        <h3>Categories</h3>
+        <h3>Boards</h3>
         <Button
           block
           style={{ marginBottom: "5px" }}
           onClick={() =>
-            setApiUrl("https://bw-pintereach.herokuapp.com/articles/articles")
+            setApiUrl(
+              "https://pintereach-backend.herokuapp.com/articles/articles"
+            )
           }
         >
           All
         </Button>
-        {Object.keys(categories)
+        {Object.keys(board)
           .sort()
           .map(category => {
             return (
               <Button
                 block
-                key={category}
+                key={board}
                 style={{ marginBottom: "5px" }}
                 onClick={() => {
                   setApiUrl(
-                    `https://bw-pintereach.herokuapp.com/articles/${category}`
+                    `https://pintereach-backend.herokuapp.com/articles/${board.id}`
                   );
                 }}
               >
-                {category}: {categories[category]}
+                {board}: {board[board]}
               </Button>
             );
           })}
