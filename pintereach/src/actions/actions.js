@@ -103,6 +103,27 @@ export const deleteBoard = Board => dispatch => {
       dispatch({ type: DELETE_BOARD_FAILURE, payload: err.response });
     });
 };
+// DELETE BOARD
+
+export const DELETE_BOARDUSER_START = "DELETE_BOARDUSER_START";
+export const DELETE_BOARDUSER_SUCCESS = "DELETE_BOARDUSER_SUCCESS";
+export const DELETE_BOARDUSER_FAILURE = "DELETE_BOARDUSER_FAILURE";
+
+export const deleteBoardUser = Board => dispatch => {
+  dispatch({ type: DELETE_BOARDUSER_START });
+  axios
+    .delete(`pintereach-backend.herokuapp.com/board/${Board.UserId}`, {
+      // <- ADD PATH
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      window.location.reload();
+    })
+
+    .catch(err => {
+      dispatch({ type: DELETE_BOARDUSER_FAILURE, payload: err.response });
+    });
+};
 
 // DELETE ARTICLE
 
