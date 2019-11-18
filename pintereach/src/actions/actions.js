@@ -239,7 +239,7 @@ export const getIdUserData = id => dispatch => {
       dispatch({ type: GET_IDUSERDATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_IDUSERDATA_FAILURE, payload: err.response });
+      dispatch({ type: GET_IDDUSERATA_FAILURE, payload: err.response });
     });
 };
 // GET BY BOARDS
