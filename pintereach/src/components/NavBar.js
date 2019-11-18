@@ -7,19 +7,19 @@ const NavBar = () => {
     <div
       style={{ width: "30%", display: "flex", justifyContent: "space-between" }}
     >
-      <NavLink to="/signup" className="NavBtn">
+      <NavLink to="/" className="NavBtn">
         {" "}
         Signup{" "}
       </NavLink>
-      <NavLink to="/login" className="NavBtn">
+      <NavLink to="/" className="NavBtn">
         {" "}
         Login{" "}
       </NavLink>
-      <NavLink to="/home" className="NavBtn">
+      <NavLink exact to="/home" className="NavBtn">
         {" "}
         Your Profile{" "}
       </NavLink>
-      <NavLink to="/login" className="NavBtn">
+      <NavLink to="/" className="NavBtn">
         {" "}
         Logout{" "}
       </NavLink>
