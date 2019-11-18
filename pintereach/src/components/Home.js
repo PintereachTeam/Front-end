@@ -62,8 +62,7 @@ const Home = () => {
     const updatedArticleList = [...articles];
     updatedArticleList[idx].mustRead = !updatedArticleList[idx].mustRead;
     setArticles(updatedArticleList);
-    // console.log(`item at index ${index} marked Must Read`)
-    // console.log('2: articles === originalArticles', originalArticles === articles);
+
   };
 
   // Menu functions
