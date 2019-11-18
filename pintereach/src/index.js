@@ -7,6 +7,10 @@ import { createStore, applyMiddleware, compose } from "redux";
 import logger from "redux-logger";
 import reducer from "./reducers/reducers";
 import thunk from "redux-thunk";
+import {BrowserRouter as Router} from 'react-router-dom';
+
+// COMPOSE
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -15,8 +19,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
+  <Router>
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>
+  </Router>,
   document.getElementById("root")
 );
