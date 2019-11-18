@@ -4,7 +4,7 @@ import { Button, Layout, Icon, PageHeader, BackTop } from "antd";
 // import SearchForm from './SearchForm';
 
 import ArticleList from "./ArticlesList";
-import ArticleModal from "./ArticleModal";
+import ArticleModal from "./Article";
 import Menu from "./Menu";
 
 const { Header, Content } = Layout;

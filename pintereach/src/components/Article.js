@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Button } from "antd";
 
-export default function ArticleModal(props) {
+export default function Article(props) {
   const { hideModal, addArticle, modalDisplay } = props;
 
   const initialFormState = {
@@ -9,7 +9,7 @@ export default function ArticleModal(props) {
     link: "",
     title: "",
     summary: "",
-    category: ""
+    board: ""
   };
 
   // State to handle content of article form

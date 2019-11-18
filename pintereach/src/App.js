@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Signup from "./components/SignUpForm";
 import NavBar from "./components/NavBar";
 //import PrivateRoute from "./components/PrivateRoute";
-import Modal from "./components/ArticleModal";
+import Modal from "./components/Article";
 // import Login from './components/Login';
 import Home from "./components/Home";
 
