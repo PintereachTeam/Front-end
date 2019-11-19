@@ -12,8 +12,8 @@ import { Layout, Icon } from "antd";
 import Modal from "./components/Article";
 import Home from "./components/Home";
 
-const { Footer } = Layout;
 function App() {
+  const { Footer } = Layout;
   return (
     <div className="App">
       <header className="App-header">
@@ -41,3 +41,4 @@ function App() {
     </div>
   );
 }
+export default App;
