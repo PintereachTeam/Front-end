@@ -5,6 +5,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
+import Profile from './components/Profile';
 import { Layout, Icon  } from "antd";
 //import PrivateRoute from "./components/PrivateRoute";
 import Modal from "./components/Article";
@@ -21,6 +22,7 @@ function App() {
         <Route path='/signup' component={SignUpForm}/>
         <Route exact path="/Modal" component={Modal} />
         <Route path="/home" component={Home} />
+        <Route path='/profile' component={Profile}/>
       </header>
 
       <Footer
