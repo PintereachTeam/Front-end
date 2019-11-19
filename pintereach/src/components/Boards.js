@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from 'react'; 
-import axios from 'axios';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import Board from './Board';
 
 
 const Boards = () => {
     const [articles, setArticles] = useState([])
-    const [boards, setBoards] = useState({
-        id: 1,
-        board_title: 'Boredom Testing',
-        user_id: 3
-    });
+    const [boards, setBoards] = useState([]);
 
     useEffect(()=>{
     axiosWithAuth().get('https://pintereach-backend.herokuapp.com/boards')
@@ -26,7 +22,7 @@ const Boards = () => {
         
         <div>
             <h1>My Boards</h1>
-            {boards.map(board => {})}
+            {boards.map(boards => <Board key={boards.id} board={boards}/>)}
         </div>
         
         
