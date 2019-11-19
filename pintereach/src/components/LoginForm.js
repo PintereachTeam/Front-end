@@ -1,56 +1,50 @@
-import React, { useState } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
-import axios from "axios";
+import React from 'react';
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
-import {
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  REGISTER_START
-} from "../actions/actions.js";
+const LoginForm = ({touched, errors, isSubmitting, values }) => {
 
-const LoginForm = props => {
-  const [login, setLogin] = useState([]);
-  const [member, setMember] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const baseURL = "https://pintereach-backend.herokuapp.com";
-    axios
-      .post(`${baseURL}/auth/login`, { username: email, password })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/login");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+    return(
+        <div className='login_form'>
+            <Form>
+                <Field type='text' name='username' placeholder='Username' value={values.username} />
+                {touched.username && errors.username && (<p>{errors.name}</p>)}
+                <Field type='password' placeholder='password' name='password' value={values.password} />
+                {touched.password && errors.password && (<p>{errors.password}</p>)}
+                <button type='submit' disabled={isSubmitting}>Login</button>
+            </Form>
+        </div>
+    )
+}
 
-  const handleChanges = event => {
-    setLogin({ ...member, [event.target.name]: event.target.value });
-  };
-  return (
-    <form>
-      <label>Username: </label>
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        value={member.name}
-      />
-      <label>Password: </label>
-      <input
-        type="password"
-        placeholder="password"
-        name="password"
-        value={member.password}
-      />
-      <button type="submit">Login</button>
-    </form>
-  );
-};
+const superLoginForm = withFormik({
+    mapPropsToValues({username,password}){
+        return {
+            username: username || '',
+            password: password || '',
+        };
+    },
 
-export default LoginForm;
+    validationSchema:Yup.object().shape({
+        username: Yup.string().required('Username is required!'),
+        password: Yup.string().required('Password is required!').min(7, 'Password must be 8 characters')
+    }),
+    handleSubmit(values, {resetForm, setErrors, setSubmitting, setStatus}){
+        axios.post('https://pintereach-backend.herokuapp.com/auth/login', values)
+        .then(response => {
+            console.log(response);
+            resetForm();
+            setSubmitting(false);
+            setStatus(response.data);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("id", response.data.id);
+        })
+        .catch(error => console.log(error));
+        setSubmitting(false);
+    }
+
+})(LoginForm)
+
+export default superLoginForm;

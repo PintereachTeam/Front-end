@@ -1,29 +1,43 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
-import Boards from "./components/Boards";
-import Login from "./components/LoginForm";
-import NavBar from "./components/NavBar";
-import PrivateRoute from "./components/PrivateRoute";
-import Register from "./components/Register";
-import UserHome from "./components/UserHome";
-import UserProfile from "./components/UserProfile";
 
-export default function App() {
+import { Route } from "react-router-dom";
+
+import "./App.css";
+import NavBar from "./components/NavBar";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+
+import { Layout, Icon } from "antd";
+//import PrivateRoute from "./components/PrivateRoute";
+import Modal from "./components/Article";
+import Home from "./components/Home";
+
+const { Footer } = Layout;
+function App() {
   return (
-    <Router>
-      <div className="app">
-        <div className="nav">
-          <NavBar />
-        </div>
-        <div className="body">
-          <Route exact path="/" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/home" component={UserHome} />
-          <PrivateRoute exact path="/add-board" component={Boards} />
-          <PrivateRoute exact path="/profile" component={UserProfile} />
-        </div>
-      </div>
-    </Router>
+    <div className="App">
+      <header className="App-header">
+        <NavBar />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/signup" component={SignUpForm} />
+        <Route exact path="/Modal" component={Modal} />
+        <Route path="/home" component={Home} />
+      </header>
+
+      <Footer
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          padding: "auto 50%"
+        }}
+      >
+        <span>Copyright Pintereach 2019</span>{" "}
+        <span>
+          <a href="https://github.com/PintereachTeam">
+            <Icon type="github" />
+          </a>
+        </span>
+      </Footer>
+    </div>
   );
 }
