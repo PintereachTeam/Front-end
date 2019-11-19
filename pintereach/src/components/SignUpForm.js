@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const SignUpForm = ({touched, errors, isSubmitting, values }) => {
 
-  
+
     return(
         <div className='login_form'>
             <Form>
@@ -17,7 +17,7 @@ const SignUpForm = ({touched, errors, isSubmitting, values }) => {
                 {touched.first_name && errors.first_name && (<p>{errors.first_name}</p>)}
                 <Field type='text' name='last_name' placeholder='Last name' value={values.last_name} />
                 {touched.last_name && errors.last_name && (<p>{errors.last_name}</p>)}
-                <Field type='email' name='email' placeholder='Email'/> 
+                <Field type='email' name='email' placeholder='Email'/>
                 {touched.email && errors.email && (<p>{errors.email}</p>)}
                 <button type='submit' disabled={isSubmitting}>Sign Up!</button>
             </Form>
@@ -54,7 +54,7 @@ const superSignUpForm = withFormik({
         .catch(error => console.log(error));
         setSubmitting(false);
     }
-    
+
 })(SignUpForm)
 
 export default superSignUpForm;

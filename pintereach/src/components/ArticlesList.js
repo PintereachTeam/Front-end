@@ -1,24 +1,31 @@
-import React from "react";
-import { Row, Col } from "antd";
+import React, {useState,useEffect} from "react";
+import Home from "./Home";
+import Article from "./Article.js";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-function ArticleList({ articles, setMustRead, deleteArticle }) {
-  return (
-    <Row
-      ctype="flex"
-      justify="space-around"
-      gutter={16}
-      style={{ margin: "1rem", width: "auto" }}
-    >
-      {articles.map(entry => (
-        <Col
-          span={8}
-          key={entry.articleid}
-          style={{
-            marginBottom: "2rem"
-          }}
-        ></Col>
-      ))}
-    </Row>
-  );
-}
+
+ const ArticleList = props => {
+   const [articles, setArticles] = useState([]);
+   console.log("articles", articles);
+    const [user, setUsers] = useState([]);
+
+   useEffect(() => {
+     axiosWithAuth()
+       .get("https://pintereach-backend.herokuapp.com/articles")
+       .then(res => {
+         console.log(res.data);
+         setArticles(res.data);
+       })
+       .catch(error => console.log(error));
+   }, []);
+
+   return (
+     <div>
+       {articles.map(articles => (
+         <Article key={user.id} />
+       ))}
+     </div>
+   );
+ };
+
 export default ArticleList;
