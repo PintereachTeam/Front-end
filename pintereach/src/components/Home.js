@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Layout } from "antd";
-// import SearchForm from './SearchForm';
+import SearchForm from "./SearchForm";
 
 import ArticleList from "./ArticlesList";
 
@@ -15,6 +15,7 @@ const Home = () => {
   const [menuDisplay, setMenuDisplay] = useState({ visible: false });
   const [modalDisplay, setModalDisplay] = useState({ visible: false });
   const [toggleState, setToggleState] = useState(false);
+  const [displayedArticles, setDisplayedArticles] = useState(false);
 
   const showModal = () => {
     // console.log(modalDisplay);
@@ -81,10 +82,13 @@ const Home = () => {
 
   return (
     <Layout>
-      <button onClick={() => showMenu()}
-      ></button>
+      <button onClick={() => showMenu()}></button>
 
-      {/* <SearchForm articles={articles} displayedArticles={displayedArticles} setDisplayedArticles={setDisplayedArticles} /> */}
+      <SearchForm
+        articles={articles}
+        displayedArticles={displayedArticles}
+        setDisplayedArticles={setDisplayedArticles}
+      />
 
       <Menu
         showMenu={showMenu}
