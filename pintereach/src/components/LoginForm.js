@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
-const LoginForm = () => {
-    const [login, setLogin] = useState([])
+import React, {useState, useEffect} from 'react';
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
-    const handleChanges = event => {
-        setLogin({...member, [event.target.name]:event.target.value})
-    }
+const LoginForm = () => {
+    const [login, setLogin] = useState({
+        username: '',
+        password: ''
+    })
+
+    
+    
     return(
-        <form>
-            <label>Username: </label>
-            <input type='text' placeholder='Username' name='username' value={member.name}/>
-            <label>Password: </label>
-            <input type='password' placeholder='password' name='password' value={member.password} />
+        <Form>
+            <Field type='text' placeholder='Username' name='username' value={login.name}/>
+            <Field type='password' placeholder='password' name='password' value={login.password} />
             <button type='submit'>Login</button>
-        </form>
+        </Form>
     )
 }
 
