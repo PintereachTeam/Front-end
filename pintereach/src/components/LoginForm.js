@@ -1,19 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const LoginForm = ({touched, errors, isSubmitting, status, values }) => {
-    const [login, setLogin] = useState({
-        username: '',
-        password: ''
-    })
+const LoginForm = ({touched, errors, isSubmitting, values }) => {
 
-    useEffect(()=> {
-        status && setLogin(login =>[...login, status])
-    },[status]);
-    
-    
+  
     return(
         <div className='login_form'>
             <Form>
@@ -37,7 +29,7 @@ const superLoginForm = withFormik({
 
     validationSchema:Yup.object().shape({
         username: Yup.string().required('Username is required!'),
-        password: Yup.string().required('Password is required!').min(8, 'Password must be 8 characters')
+        password: Yup.string().required('Password is required!').min(7, 'Password must be 8 characters')
     }),
     handleSubmit(values, {resetForm, setErrors, setSubmitting, setStatus}){
         axios.post('https://pintereach-backend.herokuapp.com/auth/login', values)
