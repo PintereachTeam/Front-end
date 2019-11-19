@@ -38,6 +38,8 @@ const superLoginForm = withFormik({
             resetForm();
             setSubmitting(false);
             setStatus(response.data);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("id", response.data.id);
         })
         .catch(error => console.log(error));
         setSubmitting(false);
