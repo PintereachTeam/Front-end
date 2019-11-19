@@ -127,12 +127,12 @@ export const deleteBoardUser = Board => dispatch => {
 
 // DELETE ARTICLE
 
-export const DELETE_START = "DELETE_START";
-export const DELETE_SUCCESS = "DELETE_SUCCESS";
-export const DELETE_FAILURE = "DELETE_FAILURE";
+export const DELETE_ARTICLE_START = "DELETE_START";
+export const DELETE_ARTICLE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_ARTICLE_FAILURE = "DELETE_FAILURE";
 
 export const deleteArticle = article => dispatch => {
-  dispatch({ type: DELETE_START });
+  dispatch({ type: DELETE_ARTICLE_START });
   axios
     .delete(`pintereach-backend.herokuapp.com//articles/${article.articleId}`, {
       // <- ADD PATH
@@ -143,7 +143,7 @@ export const deleteArticle = article => dispatch => {
     })
 
     .catch(err => {
-      dispatch({ type: DELETE_FAILURE, payload: err.response });
+      dispatch({ type: DELETE_ARTICLE_FAILURE, payload: err.response });
     });
 };
 

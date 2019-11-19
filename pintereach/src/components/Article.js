@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { articles } from "../actions/actions";
+import { getAllData, deleteArticle } from "../actions/actions";
 
 class Article extends React.Component {
   constructor(props) {

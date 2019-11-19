@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Layout } from "antd";
-import SearchForm from "./SearchForm";
 
 import ArticleList from "./ArticlesList";
 
 import Menu from "./Menu";
-
-const { Content } = Layout;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -27,11 +24,10 @@ const Home = () => {
     setModalDisplay({ visible: false });
   };
 
-  const addArticle = article => {
-    // console.log('submit and add article pressed')
-    console.log(`article in addArticle: ${article}`);
-    setArticles([...articles, article]);
-    // setDisplayedArticles(articles);
+  const addArticles = articles => {
+    console.log(`article in addArticle: ${articles}`);
+    setArticles([...articles, articles]);
+
     setModalDisplay({ visible: false });
 
     // console.log(articles)
@@ -43,10 +39,8 @@ const Home = () => {
   };
 
   const setMustRead = articleid => {
-    const idx = articles.findIndex(entry => entry.articleid === articleid);
-
     const updatedArticleList = [...articles];
-    updatedArticleList[idx].mustRead = !updatedArticleList[idx].mustRead;
+    updatedArticleList.mustRead = !updatedArticleList.mustRead;
     setArticles(updatedArticleList);
   };
 
@@ -83,12 +77,6 @@ const Home = () => {
   return (
     <Layout>
       <button onClick={() => showMenu()}></button>
-
-      <SearchForm
-        articles={articles}
-        displayedArticles={displayedArticles}
-        setDisplayedArticles={setDisplayedArticles}
-      />
 
       <Menu
         showMenu={showMenu}
