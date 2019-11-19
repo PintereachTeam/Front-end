@@ -7,12 +7,12 @@ const NavBar = () => {
     <div
       style={{ width: "30%", display: "flex", justifyContent: "space-between" }}
     >
-      <Router>
-        <NavLink to="/" className="NavBtn">
+      
+        <NavLink to="/signup" className="NavBtn">
           {" "}
           Signup{" "}
         </NavLink>
-        <NavLink to="/" className="NavBtn">
+        <NavLink to="/login" className="NavBtn">
           {" "}
           Login{" "}
         </NavLink>
@@ -24,7 +24,7 @@ const NavBar = () => {
           {" "}
           Logout{" "}
         </NavLink>
-      </Router>
+     
     </div>
   );
 };

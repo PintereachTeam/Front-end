@@ -8,7 +8,6 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 
 import { Layout, Icon } from "antd";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 //import PrivateRoute from "./components/PrivateRoute";
 import Modal from "./components/Article";
 import Home from "./components/Home";
@@ -41,7 +40,7 @@ function App() {
           </a>
         </span>
       </Footer>
-   
+   </div>
 
   );
 }
