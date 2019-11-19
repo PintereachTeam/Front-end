@@ -30,7 +30,7 @@ export const register = creds => dispatch => {
     .post("https://pintereach-backend.herokuapp.com/register", creds) //  <- ADD PATH
     .then(res => {
       return axios
-        .post("https://pintereach-backend.herokuapp.com//login", creds) //  <- ADD PATH
+        .post("https://pintereach-backend.herokuapp.com/login", creds) //  <- ADD PATH
         .then(res => {
           localStorage.setItem("token", res.data.token);
           dispatch({ type: LOGIN_SUCCESS, payload: res.data });

@@ -1,17 +1,23 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import styled from "styled-components";
 
 import { addBoard } from "../actions/actions";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 class Boards extends React.Component {
-  state = {
-    body: {
-      name: ""
-    }
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      Boards: []
+    };
+  }
+  componentDidMount() {
+    axiosWithAuth()
+      .get("https://pintereach-backend.herokuapp.com/boards")
+      .then(res => this.setState({ boards: res.data }))
+      .catch(err => console.log(err.response));
+  }
   changeHandler = e => {
     this.setState({
       body: {

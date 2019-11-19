@@ -12,7 +12,7 @@ const initialState = {};
 
 // REDUCER
 
-const reducer = (state = initialState, action) => {
+const reducers = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       return {
@@ -36,4 +36,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default reducers;

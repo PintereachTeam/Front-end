@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { RemoveCircleOutline } from "styled-icons/material/RemoveCircleOutline";
 import axios from "axios";
+import { articles } from "../actions/actions";
 
 const RemoveCircleOutlineRed = styled(RemoveCircleOutline)`
   color: red;
@@ -13,9 +14,12 @@ const RemoveCircleOutlineRed = styled(RemoveCircleOutline)`
 `;
 
 class ArticleFeed extends React.Component {
-  state = {
-    deletingArticle: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      Articles: []
+    };
+  }
 
   deleteArticle = (id, user_id) => {
     this.setState({ deletingArticle: id });

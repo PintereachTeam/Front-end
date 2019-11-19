@@ -100,24 +100,4 @@ class UserHome extends React.Component {
   }
 }
 
-const mapStateToProps = ({
-  articles,
-  fetchingArticles,
-  message,
-  deletingArticle,
-  id,
-  boards,
-  allArticles
-}) => ({
-  articles,
-  fetchingArticles,
-  message,
-  deletingArticle,
-  id,
-  boards,
-  allArticles
-});
-
-export default connect(mapStateToProps, { getAllData, deleteArticle })(
-  UserHome
-);
+export default UserHome;
