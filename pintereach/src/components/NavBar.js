@@ -5,7 +5,7 @@ import { PageHeader } from "antd";
 const NavBar = () => {
   return (
     <div
-      style={{ width: "30%", display: "flex", justifyContent: "space-between" }}
+      style={{ width: "30%", display: "flex", justifyContent: "space-between", alignContent: 'start', color: 'white', textDecoration: 'none' }}
     >
       
         <NavLink to="/signup" className="NavBtn">
