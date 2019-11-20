@@ -7,10 +7,15 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
 import { Layout, Icon  } from "antd";
-import AddArticleForm from "./components/AddArticleForm"
+
 //import PrivateRoute from "./components/PrivateRoute";
 import Modal from "./components/Article";
 import Home from "./components/Home";
+
+//testing
+import AddArticleForm from "./components/AddArticleForm"
+import AddBoardForm from "./components/AddBoardForm"
+
 
 const { Header, Footer, Content } = Layout;
 
@@ -20,6 +25,7 @@ function App() {
       <header className="App-header">
         <NavBar />
         <AddArticleForm />
+        <AddBoardForm />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
         <Route exact path="/Modal" component={Modal} />
