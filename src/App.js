@@ -8,21 +8,35 @@ import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
 import Article from './components/Article'
 import { Layout, Icon  } from "antd";
-//import PrivateRoute from "./components/PrivateRoute";
 
+import PrivateRoute from './utils/PrivateRoute'
+import Modal from "./components/Article";
+import Home from "./components/Home";
 
+//testing
+import AddArticleForm from "./components/AddArticleForm"
+import AddBoardForm from "./components/AddBoardForm"
+import BoardPage from "./components/BoardPage"
+
+const { Header, Footer, Content } = Layout;
 
 const { Footer} = Layout;
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <NavBar />
+        <AddArticleForm />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
+        <Route exact path="/Modal" component={Modal} />
+        <PrivateRoute path='/profile' component={Profile}/>
+        <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
         <Route path='/articles' component={Article}/>
-        <Route path='/profile' component={Profile}/>
+
+
       </header>
 
       <Footer
