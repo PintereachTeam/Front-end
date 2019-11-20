@@ -4,7 +4,7 @@ import Board from './Board';
 
 
 const Boards = () => {
-    const [articles, setArticles] = useState([])
+    // const [articles, setArticles] = useState([])
     const [boards, setBoards] = useState([]);
 
     useEffect(()=>{

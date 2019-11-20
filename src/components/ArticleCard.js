@@ -3,12 +3,12 @@ import React from "react";
 
 
 const ArticleCard = props => {
-  const {} = props.article
+  const article = props.article
 
     return(
       <div className='article_card'>
-        <h3>{props.article.article_label}</h3>
-        <a>{props.article.url}</a>
+        <h3>{article.article_label}</h3>
+        <a href={article.url}>{article.url}</a>
       </div>
     )
 
