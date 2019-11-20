@@ -8,11 +8,28 @@ import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
 import Article from './components/Article'
 import { Layout, Icon  } from "antd";
+<<<<<<< HEAD
 //import PrivateRoute from "./components/PrivateRoute";
 
 
 
 const { Footer} = Layout;
+=======
+
+import PrivateRoute from './utils/PrivateRoute'
+import Modal from "./components/Article";
+import Home from "./components/Home";
+
+//testing
+import AddArticleForm from "./components/AddArticleForm"
+import AddBoardForm from "./components/AddBoardForm"
+import BoardPage from "./components/BoardPage"
+
+const { Header, Footer, Content } = Layout;
+
+const { Footer} = Layout;
+
+>>>>>>> 3b50a6e3d5b68b70098c05201eab02655e94990d
 
 function App() {
   return (
@@ -22,6 +39,7 @@ function App() {
         <AddArticleForm />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
+<<<<<<< HEAD
 
         <Route exact path="/Modal" component={Modal} />
         <PrivateRoute path='/profile' component={Profile}/>
@@ -29,6 +47,14 @@ function App() {
 
         <Route path='/articles' component={Article}/>
        
+=======
+        <Route exact path="/Modal" component={Modal} />
+        <PrivateRoute path='/profile' component={Profile}/>
+        <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
+        <Route path='/articles' component={Article}/>
+
+
+>>>>>>> 3b50a6e3d5b68b70098c05201eab02655e94990d
       </header>
 
       <Footer
