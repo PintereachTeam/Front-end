@@ -8,8 +8,7 @@ const ArticlesList = () => {
   const [saved, setSaved] = useState([]);
 
   const deleteArticle = id => {
-    e.preventDefault()
-    axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/article/${id}`, newBoard)
+    axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
         .then(r => 
           setArticles(articles.filter(item => item.id !== id))
           )
@@ -17,7 +16,9 @@ const ArticlesList = () => {
     }
 
     const saveArticle = article => {
-      if (saved.filter(item => item.id = article.id)) {
+      console.log(saved.filter(item => item.id = article.id))
+
+      if (saved.filter(item => item.id = article.id).length !== 0) {
         console.log("that article is already saved");
       } else {
       setSaved([...saved, article])
