@@ -8,7 +8,7 @@ const ArticleCard = props => {
     return(
       <div className='article_card'>
         <h3>{props.article.article_label}</h3>
-        <p>{props.article.url}</p>
+        <a>{props.article.url}</a>
       </div>
     )
 
