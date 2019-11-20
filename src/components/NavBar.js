@@ -16,7 +16,7 @@ const NavBar = () => {
           {" "}
           Login{" "}
         </NavLink>
-        <NavLink exact to="/home" className="NavBtn">
+        <NavLink exact to="/profile" className="NavBtn">
           {" "}
           Your Profile{" "}
         </NavLink>
