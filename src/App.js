@@ -8,7 +8,7 @@ import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
 import { Layout, Icon  } from "antd";
 //import PrivateRoute from "./components/PrivateRoute";
-import Modal from "./components/Article";
+
 
 
 const { Header, Footer, Content } = Layout;
@@ -20,7 +20,7 @@ function App() {
         <NavBar />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-        <Route exact path="/Modal" component={Modal} />
+        
         <Route path='/profile' component={Profile}/>
       </header>
 
