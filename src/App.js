@@ -11,12 +11,14 @@ import { Layout, Icon  } from "antd";
 
 import PrivateRoute from './utils/PrivateRoute'
 import Modal from "./components/Article";
-import Home from "./components/Home";
+import BoardPage from "./components/BoardPage"
 
 //testing
 import AddArticleForm from "./components/AddArticleForm"
-import AddBoardForm from "./components/AddBoardForm"
-import BoardPage from "./components/BoardPage"
+
+
+
+
 
 const { Footer} = Layout;
 
