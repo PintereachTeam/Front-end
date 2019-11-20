@@ -15,7 +15,7 @@ import Home from "./components/Home";
 //testing
 import AddArticleForm from "./components/AddArticleForm"
 import AddBoardForm from "./components/AddBoardForm"
-
+import BoardPage from "./components/BoardPage"
 
 const { Header, Footer, Content } = Layout;
 
@@ -29,6 +29,7 @@ function App() {
         <Route path='/signup' component={SignUpForm}/>
         <Route exact path="/Modal" component={Modal} />
         <PrivateRoute path='/profile' component={Profile}/>
+        <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
       </header>
 
       <Footer
