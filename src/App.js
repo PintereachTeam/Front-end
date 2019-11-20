@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
+import Article from './components/Article'
 import { Layout, Icon  } from "antd";
 //import PrivateRoute from "./components/PrivateRoute";
 
@@ -20,7 +21,7 @@ function App() {
         <NavBar />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-        
+        <Route path='/articles' component={Article}/>
         <Route path='/profile' component={Profile}/>
       </header>
 
