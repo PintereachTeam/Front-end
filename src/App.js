@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Profile from './components/Profile';
+import Article from './components/Article'
 import { Layout, Icon  } from "antd";
 
 import PrivateRoute from './utils/PrivateRoute'
@@ -19,6 +20,9 @@ import BoardPage from "./components/BoardPage"
 
 const { Header, Footer, Content } = Layout;
 
+const { Footer} = Layout;
+
+
 function App() {
   return (
     <div className="App">
@@ -30,6 +34,9 @@ function App() {
         <Route exact path="/Modal" component={Modal} />
         <PrivateRoute path='/profile' component={Profile}/>
         <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
+        <Route path='/articles' component={Article}/>
+
+
       </header>
 
       <Footer

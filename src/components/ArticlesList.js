@@ -1,37 +1,25 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import ArticleCard from "./ArticleCard";
-import { Row, Col } from "antd";
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
-function ArticleList({ articles, setMustRead, deleteArticle }) {
-  return (
-    <Row
-      ctype="flex"
-      justify="space-around"
-      gutter={16}
-      style={{ margin: "1rem", width: "auto" }}
-    >
-      {articles.map(entry => (
-        <Col
-          span={8}
-          key={entry.articleid}
-          style={{
-            marginBottom: "2rem"
-          }}
-        >
-          <ArticleCard
-            setMustRead={setMustRead}
-            deleteArticle={deleteArticle}
-            id={entry.articleid}
-            mustRead={entry.mustRead}
-            imgUrl="https://source.unsplash.com/random"
-            title={entry.title}
-            category={entry.category}
-            summary={entry.summary}
-            link={entry.link}
-          />
-        </Col>
-      ))}
-    </Row>
-  );
+
+const ArticlesList = () => {
+  const [articles, setArticles] = useState([])
+
+  useEffect(()=> {
+    axiosWithAuth().get('https://pintereach-backend.herokuapp.com/articles')
+    .then(response => {
+      console.log(response.data)
+      setArticles(response.data)
+    })
+    .catch(error => console.log(error))
+  },[]);
+
+  return(
+    <div>
+      <h1>Articles</h1>
+      {articles.map(articles => <ArticleCard key={articles.id} article={articles} />)}
+    </div>
+  )
 }
-export default ArticleList;
+export default ArticlesList;
