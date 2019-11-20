@@ -1,59 +1,17 @@
 import React from "react";
-import { Card, Icon, Button } from "antd";
+
 
 
 const ArticleCard = props => {
-  const {
-    id,
-    mustRead,
-    title,
-    summary,
-    category,
-    setMustRead,
-    deleteArticle,
-    link
-  } = props;
-  const { Meta } = Card;
+  const article = props.article
 
-  return (
-    <Card
-      hoverable={true}
-     
-      actions={[
-        <Button
-          type={mustRead ? "primary" : "dashed"}
-          onClick={() => setMustRead(id)}
-        >
-          Must Read
-        </Button>,
-        <Button onClick={() => deleteArticle(id)}>
-          <Icon type="delete" />
-        </Button>
-      ]}
-    >
-      <Meta
-        title={title}
-        description={<p style={{ height: "5rem" }}>{summary}</p>}
-      />
-      <div>
-        <hr
-          style={{
-            margin: "1rem"
-          }}
-        ></hr>
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "baseline"
-          }}
-        >
-          <Icon type="tag" />
-          <p>{category}</p>
-        </span>
+    return(
+      <div className='article_card'>
+        <h3>{article.article_label}</h3>
+        <a href={article.url}>{article.url}</a>
       </div>
-    </Card>
-  );
+    )
+
 };
 
 export default ArticleCard;

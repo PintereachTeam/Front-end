@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 
 const Boards = () => {
-    const [articles, setArticles] = useState([])
+    // const [articles, setArticles] = useState([])
     const [boards, setBoards] = useState([]);
     const [adding, setAdding] = useState(false);
     const [editing, setEditing] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink, Router } from "react-router-dom";
-import { PageHeader } from "antd";
+import { NavLink } from "react-router-dom";
+
 
 const NavBar = () => {
   return (
@@ -9,20 +9,19 @@ const NavBar = () => {
     >
       
         <NavLink to="/signup" className="NavBtn">
-          {" "}
-          Signup{" "}
+          Signup
         </NavLink>
         <NavLink to="/login" className="NavBtn">
-          {" "}
-          Login{" "}
+          Login
         </NavLink>
         <NavLink exact to="/profile" className="NavBtn">
-          {" "}
-          Your Profile{" "}
+          Your Profile
         </NavLink>
         <NavLink to="/" className="NavBtn">
-          {" "}
-          Logout{" "}
+          Logout
+        </NavLink>
+        <NavLink to='/articles' className='NavBtn'>
+          Articles
         </NavLink>
      
     </div>
