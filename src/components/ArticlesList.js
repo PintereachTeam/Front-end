@@ -5,6 +5,28 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([])
+  const [saved, setSaved] = useState([]);
+
+  const deleteArticle = id => {
+    e.preventDefault()
+    axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/article/${id}`, newBoard)
+        .then(r => 
+          setArticles(articles.filter(item => item.id !== id))
+          )
+        .catch(err => console.log(err))
+    }
+
+    const saveArticle = article => {
+      if (saved.filter(item => item.id = article.id)) {
+        console.log("that article is already saved");
+      } else {
+      setSaved([...saved, article])
+      localStorage.setItem("savedArticles", JSON.stringify(saved));
+      }
+    }
+
+
+
 
   useEffect(()=> {
     axiosWithAuth().get('https://pintereach-backend.herokuapp.com/articles')
@@ -18,7 +40,14 @@ const ArticlesList = () => {
   return(
     <div>
       <h1>Articles</h1>
-      {articles.map(articles => <ArticleCard key={articles.id} article={articles} />)}
+      {articles.map(articles => 
+      <ArticleCard 
+        key={articles.id} 
+        deleteArticle={deleteArticle} 
+        saveArticle={saveArticle}
+        article={articles} 
+
+        />)}
     </div>
   )
 }
