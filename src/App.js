@@ -9,7 +9,7 @@ import Profile from './components/Profile';
 import { Layout, Icon  } from "antd";
 //import PrivateRoute from "./components/PrivateRoute";
 import Modal from "./components/Article";
-import Home from "./components/Home";
+
 
 const { Header, Footer, Content } = Layout;
 
@@ -21,7 +21,6 @@ function App() {
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
         <Route exact path="/Modal" component={Modal} />
-        <Route path="/home" component={Home} />
         <Route path='/profile' component={Profile}/>
       </header>
 
