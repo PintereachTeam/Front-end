@@ -29,7 +29,7 @@ export default function BoardPage(props) {
         <div>
         <h1>{boardName}</h1>
         {articles.map(item =>
-            <div className="article-card">
+            <div key={item.id} className="article-card">
                 <h2>{item.article_label}</h2>
                 <a href={item.url}>{item.url}</a>
             </div>

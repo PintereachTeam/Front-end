@@ -1,11 +1,12 @@
 import React, {useState, useEffect}from "react";
 import ArticleCard from "./ArticleCard";
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-
+import AddArticleForm from "./AddArticleForm"
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([])
-  const [saved, setSaved] = useState([]);
+  const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("savedArticles")));
+  const [adding, setAdding] = useState(false)
 
   const deleteArticle = id => {
     axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
@@ -16,17 +17,14 @@ const ArticlesList = () => {
     }
 
     const saveArticle = article => {
-      console.log(saved.filter(item => item.id = article.id))
-
-      if (saved.filter(item => item.id = article.id).length !== 0) {
-        console.log("that article is already saved");
-      } else {
       setSaved([...saved, article])
-      localStorage.setItem("savedArticles", JSON.stringify(saved));
-      }
+
+      localStorage.setItem("savedArticles", JSON.stringify([...saved, article]));
+ 
+      console.log(saved)
     }
 
-
+    
 
 
   useEffect(()=> {
@@ -41,6 +39,8 @@ const ArticlesList = () => {
   return(
     <div>
       <h1>Articles</h1>
+      <button onClick={_ => setAdding(!adding)}>{!adding ? "Add New Article" : "Close"}</button>
+            {adding ? <AddArticleForm articles={articles} setArticles={setArticles} /> : null}
       {articles.map(articles => 
       <ArticleCard 
         key={articles.id} 
