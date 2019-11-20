@@ -12,7 +12,7 @@ import { Layout, Icon  } from "antd";
 
 
 
-const { Header, Footer, Content } = Layout;
+const { Footer} = Layout;
 
 function App() {
   return (
