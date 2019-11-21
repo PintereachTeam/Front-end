@@ -12,6 +12,7 @@ const LoginForm = ({touched, errors, isSubmitting, values }) => {
             <img src={background} alt='libraryimage' style={{width: '100%',height: '100vh', position:'absolute' , zIndex:'-1', right:'0%', opacity: '0.8' }}/>
         <div className='login_form container deep-purple darken-3' style={{width: '30%', height: '300px', margin: '70px auto', padding:'80px'}}>
             <Form>
+            <h2 style={{color:'white', fontSize:'30px', marginBottom:'15px'}}>Welcome to Pinterech</h2>
                 <Field style={{textAlign: 'center', width: '80%'}} type='text' name='username' placeholder='Username' value={values.username} />
                 <Field style={{textAlign: 'center', width: '80%'}} type='password' placeholder='Password' name='password' value={values.password} />
                 {touched.username && errors.username && (<p>{errors.name}</p>)}
