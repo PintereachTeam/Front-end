@@ -37,14 +37,25 @@ export default function BoardPage(props) {
     return (
         <div>
         <h1>{boardName}</h1>
-        {articles.map(item =>
-            <div key={item.id} className="article-card">
-                <h2>{item.article_label}</h2>
-                <a href={item.url}>{item.url}</a>
-                <button onClick={_ => deleteArticle(item.id)}>Delete Article</button> 
+        {articles.map(article =>
+            <div className="col s12 m6">
+            <div className="card #4db6ac teal lighten-2">
+              <div className="card-content white-text">
+                <span className="card-title">{article.article_label}</span>
+                <img src={`https://picsum.photos/300/200?random=${article.id}`}/>
+              </div>
+              <div className="card-action">
+                
+                <a className='deep-purple-text text-darken-4' href={article.url}>View Article</a>
+                <button onClick={_ => deleteArticle(article.id)}>Delete Article</button> 
+              </div>
+    
             </div>
+    
+          </div>
+    
             
-        )}
+            )}
         </div>)
 
 }

@@ -21,12 +21,8 @@ const NavBar = (props) => {
  
        {localStorage.getItem("token") 
         ? <NavLink onClick={logout} to="/login" >Logout</NavLink> 
-        : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" >
+        : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" ></NavLink>
 
-         
-        <NavLink to="/signup" >
-          Signup
-        </NavLink>
         <NavLink to="/login" >
 
           Login
