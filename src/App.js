@@ -25,7 +25,7 @@ import AddArticleForm from "./components/AddArticleForm"
 
 function App() {
   return (
-    <div className="App grey darken-4">
+    <div className="App ">
         <NavBar />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
