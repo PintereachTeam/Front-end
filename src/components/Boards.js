@@ -21,6 +21,12 @@ const Boards = () => {
     .catch(error => console.log(error))
 },[]);
 
+    const deleteBoard = id => {
+        axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/boards/${id}`)
+        .then(setBoards(boards.filter(item => item.id !== id)))
+        .catch(err => console.log(err))
+    }
+
     return(
         //want to return board name
         //return a list of articles assigned to board
@@ -33,21 +39,24 @@ const Boards = () => {
             <h1>My Boards</h1>
             <div className="boards-list">
             {boards.length > 0 ? boards.map(boards => 
-            <Link key={boards.id} to={`articles/${boards.id}`}>
+            
                 <div className="col s12 m6 boards-card">
                     <div className="card #4db6ac teal lighten-2">
+                    <Link key={boards.id} to={`articles/${boards.id}`}>
                         <div className="card-content white-text">
                             <Board key={boards.id} board={boards}/>
                             <img src={`https://picsum.photos/300/200?random=${boards.id}`}/>
                         </div>
+                        </Link>
+
                     <div className="card-action">
-                        <button>Delete Board</button>
+                        <button onClick={(e) => {e.stopPropagation(); deleteBoard(boards.id)}}>Delete Board</button>
                     </div>
 
                     </div>
 
                 </div>
-            </Link>)
+            )
             : <h5></h5>}
             </div>
         </div>
