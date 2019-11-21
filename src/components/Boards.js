@@ -47,7 +47,7 @@ const Boards = () => {
                             <Board key={boards.id} board={boards}/>
                             <img src={`https://picsum.photos/300/200?random=${boards.id}`}/>
                         </div>
-                        </Link>
+                    </Link>
 
                     <div className="card-action">
                         <button onClick={(e) => {e.stopPropagation(); deleteBoard(boards.id)}}>Delete Board</button>
