@@ -1,29 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import logo from '../img/icon_white.png'
 
 const NavBar = () => {
   return (
-    <div
-      style={{ width: "30%", display: "flex", justifyContent: "space-between", alignContent: 'start', color: 'white', textDecoration: 'none' }}
-    >
-      <img src='/src/img/icon_white.png' alt='pinterech_logo'/>
-        <NavLink to="/signup" className="NavBtn">
+    <div className='nav-wrapper'>
+     
+      <img className="left brand-logo" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} />
+       <div className="right hide-on-med-and-down">
+        <NavLink to="/signup" >
           Signup
         </NavLink>
-        <NavLink to="/login" className="NavBtn">
+        <NavLink to="/login" >
           Login
         </NavLink>
-        <NavLink exact to="/profile" className="NavBtn">
+        <NavLink exact to="/profile" >
           Your Profile
         </NavLink>
-        <NavLink to="/" className="NavBtn">
+        <NavLink to="/" >
           Logout
         </NavLink>
-        <NavLink to='/articles' className='NavBtn'>
+        <NavLink to='/articles' >
           Articles
         </NavLink>
-     
+        </div>
     </div>
   );
 };
