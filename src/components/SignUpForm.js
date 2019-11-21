@@ -2,26 +2,35 @@ import React from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import background from '../img/background.jpg'
 
 const SignUpForm = ({touched, errors, isSubmitting, values }) => {
 
   
     return(
-        <div className='login_form'>
-            <Form>
-                <Field type='text' name='username' placeholder='Username' value={values.username} />
-                {touched.username && errors.username && (<p>{errors.name}</p>)}
-                <Field type='password' placeholder='password' name='password' value={values.password} />
-                {touched.password && errors.password && (<p>{errors.password}</p>)}
-                <Field type='text' name='first_name' placeholder='First name' value={values.first_name} />
-                {touched.first_name && errors.first_name && (<p>{errors.first_name}</p>)}
-                <Field type='text' name='last_name' placeholder='Last name' value={values.last_name} />
-                {touched.last_name && errors.last_name && (<p>{errors.last_name}</p>)}
-                <Field type='email' name='email' placeholder='Email'/> 
-                {touched.email && errors.email && (<p>{errors.email}</p>)}
-                <button type='submit' disabled={isSubmitting}>Sign Up!</button>
-            </Form>
-        </div>
+
+        <div style={{height:'100vh', width: '100%', background: 'black', position: 'absolute', zIndex: '-1'}}>
+        <img src={background} alt='libraryimage' style={{width: '100%',height: '100vh', position:'absolute' , zIndex:'-1', right:'0%', opacity: '0.8' }}/>
+    <div className='login_form container deep-purple darken-3' style={{width: '30%', height: '550px', margin: '70px auto', padding:'80px', borderRadius:'10px'}}>
+        <Form>
+        <h2 style={{color:'white', fontSize:'30px', marginBottom:'15px'}}>Welcome to Pinterech</h2>
+            <Field style={{textAlign: 'center', width: '80%'}} type='text' name='first_name' placeholder='First name' value={values.first_name} />
+             {touched.first_name && errors.first_name && (<p>{errors.first_name}</p>)}
+             <Field style={{textAlign: 'center', width: '80%'}} type='text' name='last_name' placeholder='Last name' value={values.last_name} />
+             {touched.last_name && errors.last_name && (<p>{errors.last_name}</p>)}
+             <Field style={{textAlign: 'center', width: '80%'}} type='email' name='email' placeholder='Email'/> 
+            {touched.email && errors.email && (<p>{errors.email}</p>)}
+            <Field style={{textAlign: 'center', width: '80%'}} type='text' name='username' placeholder='Username' value={values.username} />
+            <Field style={{textAlign: 'center', width: '80%'}} type='password' placeholder='Password' name='password' value={values.password} />
+            {touched.username && errors.username && (<p>{errors.name}</p>)}
+            {touched.password && errors.password && (<p>{errors.password}</p>)}
+            <br/>
+            <button style={{margin: '15px'}} className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Sign Up
+            <i className="material-icons right">send</i>
+            </button>
+        </Form>
+    </div>
+    </div>
     )
 }
 
