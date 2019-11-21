@@ -23,7 +23,7 @@ export default function BoardPage(props) {
             console.log(error);
         })
 
-    }, [])
+    }, [props.match.params.id])
     
     return (
         <div>
