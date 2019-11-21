@@ -40,7 +40,7 @@ const superLoginForm = withFormik({
             setStatus(response.data);
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("id", response.data.id);
-            localStorage.setItem("savedArticles") ? null : localStorage.setItem("savedArticles", [])
+            localStorage.getItem("savedArticles") ? null : localStorage.setItem("savedArticles", [])
         })
         .catch(error => console.log(error));
         setSubmitting(false);
