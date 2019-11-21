@@ -1,30 +1,27 @@
 import React from "react";
-import { NavLink, Router } from "react-router-dom";
-import { PageHeader } from "antd";
+import { NavLink } from "react-router-dom";
+import logo from "../img/icon_white.png";
 
 const NavBar = () => {
   return (
-    <div
-      style={{ width: "30%", display: "flex", justifyContent: "space-between", alignContent: 'start', color: 'white', textDecoration: 'none' }}
-    >
-      
-        <NavLink to="/signup" className="NavBtn">
-          {" "}
-          Signup{" "}
+    <div className="nav-wrapper">
+      <img
+        className="left brand-logo"
+        src={logo}
+        alt="pinterech_logo"
+        style={{ width: 50, height: 50 }}
+      />
+      <div className="right hide-on-med-and-down">
+        <NavLink to="/signup">Signup</NavLink>
+        <br></br>
+        <NavLink to="/login">Login</NavLink>
+        <br></br>
+        <NavLink exact to="/profile">
+          Your Profile
         </NavLink>
-        <NavLink to="/login" className="NavBtn">
-          {" "}
-          Login{" "}
-        </NavLink>
-        <NavLink exact to="/home" className="NavBtn">
-          {" "}
-          Your Profile{" "}
-        </NavLink>
-        <NavLink to="/" className="NavBtn">
-          {" "}
-          Logout{" "}
-        </NavLink>
-     
+        <br></br>
+        <NavLink to="/">Logout</NavLink>
+      </div>
     </div>
   );
 };

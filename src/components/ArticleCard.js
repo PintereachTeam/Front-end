@@ -1,59 +1,38 @@
 import React from "react";
-import { Card, Icon, Button } from "antd";
+import {axiosWithAuth} from "../utils/axiosWithAuth";
+
 
 
 const ArticleCard = props => {
-  const {
-    id,
-    mustRead,
-    title,
-    summary,
-    category,
-    setMustRead,
-    deleteArticle,
-    link
-  } = props;
-  const { Meta } = Card;
+  const article = props.article;
+  
 
-  return (
-    <Card
-      hoverable={true}
-     
-      actions={[
-        <Button
-          type={mustRead ? "primary" : "dashed"}
-          onClick={() => setMustRead(id)}
-        >
-          Must Read
-        </Button>,
-        <Button onClick={() => deleteArticle(id)}>
-          <Icon type="delete" />
-        </Button>
-      ]}
-    >
-      <Meta
-        title={title}
-        description={<p style={{ height: "5rem" }}>{summary}</p>}
-      />
-      <div>
-        <hr
-          style={{
-            margin: "1rem"
-          }}
-        ></hr>
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "baseline"
-          }}
-        >
-          <Icon type="tag" />
-          <p>{category}</p>
-        </span>
+
+
+  
+
+    return(
+
+    
+
+      <div className="col s12 m6">
+        <div className="card #4db6ac teal lighten-2">
+          <div className="card-content white-text">
+            <span className="card-title">{article.article_label}</span>
+            <img src={`https://picsum.photos/300/200?random=${article.id}`}/>
+          </div>
+          <div className="card-action">
+            
+            <a className='deep-purple-text text-darken-4' href={article.url}>View Article</a>
+            <button onClick={ _ => props.saveArticle(article)}>Save Article</button>
+          </div>
+
+        </div>
+
       </div>
-    </Card>
-  );
+
+    )
+
 };
 
 export default ArticleCard;
