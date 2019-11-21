@@ -35,10 +35,11 @@ const ArticlesList = () => {
 
   return( 
     <>
+    <h1>Articles</h1>
     <button onClick={_ => setAdding(!adding)}>{!adding ? "Add New Article" : "Close"}</button>
             {adding ? <AddArticleForm articles={articles} setArticles={setArticles} /> : null}
     <div className='row'>
-      <h1>Articles</h1>
+      
       
       {articles.map(articles => 
       <ArticleCard 

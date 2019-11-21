@@ -38,7 +38,7 @@ function App() {
           <Route path='/signup' component={SignUpForm}/>
           <Route exact path="/Modal" component={Modal} />
           <PrivateRoute path='/profile' component={Profile}/>
-          <Route exact path='/articles' component={Article}/>
+          <PrivateRoute exact path='/articles' component={Article}/>
           <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
           
     </div>

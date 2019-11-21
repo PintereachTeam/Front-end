@@ -1,26 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth"
 
-export default function AddArticleForm(props) {
-
+export default function AddArticleForm({articles, setArticles}) {
+    const id = localStorage.getItem("id");
     const [newArticle, setNewArticle] = useState({
         url: "",
         article_label: "",
         board_id: 0
     });
+    const [boards, setBoards] = useState([])
+
+    useEffect(()=>{
+        axiosWithAuth().get(`https://pintereach-backend.herokuapp.com/boards/`)
+        .then(response => {
+            setBoards(response.data)
+            console.log(response.data)
+        })
+        .catch(error => console.log(error))
+    },[]);
 
 
     const handleSubmit = e => {
         e.preventDefault()
         axiosWithAuth().post("https://pintereach-backend.herokuapp.com/articles/", newArticle)
-            .then(r => console.log(r))
+            .then(r => {
+                setArticles([...articles, newArticle])
+                setNewArticle({
+                    url: "",
+                    article_label: "",
+                    board_id: 0
+                })
+            })
             .catch(err => console.log(err))
-        setNewArticle({
-            url: "",
-            article_label: "",
-            board_id: 0
-        })
+        
     };
+    
+
+
     const handleChange = e => {
         setNewArticle({ 
             ...newArticle,
@@ -51,6 +67,11 @@ export default function AddArticleForm(props) {
                 value={newArticle.board_id}
                 name="board_id"
             />
+            <select name="boards">
+                {boards.map(board => <p>hey</p>)}
+
+            </select>
+
         <button type="submit">Post Article</button> 
         </form>
     </div>
