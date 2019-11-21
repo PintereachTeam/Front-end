@@ -2,19 +2,24 @@ import React from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import background from '../img/background.jpg'
 
 const LoginForm = ({touched, errors, isSubmitting, values }) => {
     
   
     return(
-        <div className='login_form container'>
+        <div style={{height:'100vh', width: '100%', background: 'black', position: 'absolute', zIndex: '-1'}}>
+            <img src={background} alt='libraryimage' style={{width: '100%',height: '100vh', position:'absolute' , zIndex:'-1', right:'0%', opacity: '0.8' }}/>
+        <div className='login_form container deep-purple darken-3' style={{width: '30%', height: '300px', margin: '70px auto', padding:'80px'}}>
             <Form>
-                <Field type='text' name='username' placeholder='Username' value={values.username} />
+                <Field style={{textAlign: 'center', width: '80%'}} type='text' name='username' placeholder='Username' value={values.username} />
+                <Field style={{textAlign: 'center', width: '80%'}} type='password' placeholder='Password' name='password' value={values.password} />
                 {touched.username && errors.username && (<p>{errors.name}</p>)}
-                <Field type='password' placeholder='password' name='password' value={values.password} />
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
+                <br/>
                 <button className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login</button>
             </Form>
+        </div>
         </div>
     )
 }

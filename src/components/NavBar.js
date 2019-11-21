@@ -11,11 +11,14 @@ const NavBar = (props) => {
     setLogged(false)
   }
   return (
-    <div className='nav-wrapper'>
-     
-      <img className="left brand-logo" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} />
-       <div className="right hide-on-med-and-down">
-        {localStorage.getItem("token") 
+
+    <nav>
+    <div className='nav-wrapper #7804eb lighten-2' style={{display:'flex', justifyContent: 'space-between', width: '100%'}}>
+     <div>
+      <img className="brand-logo left" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} />
+      </div>
+       <div style={{display: 'flex', justifyContent: 'space-between', width: 500}}>
+       {localStorage.getItem("token") 
         ? <NavLink onClick={logout} to="/login" >Logout</NavLink> 
         : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" >
           Login
@@ -32,6 +35,8 @@ const NavBar = (props) => {
         </NavLink>
         </div>
     </div>
+</nav>
+  
   );
 };
 
