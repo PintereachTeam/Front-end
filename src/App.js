@@ -26,6 +26,7 @@ import { BoardContext } from "./contexts/BoardContext";
 function App() {
   const [boardlist, setBoardList] = useState([]);
   const [logged, setLogged] = useState(localStorage.getItem("token") ? true : false)
+  
   return (
     <BoardContext.Provider
       value={{ boardlist, setBoardList, logged, setLogged }}

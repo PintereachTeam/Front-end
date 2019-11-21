@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import logo from '../img/icon_white.png'
 import {BoardContext} from "../contexts/BoardContext"
 
-const NavBar = () => {
+const NavBar = (props) => {
+  // const [logged, setLogged] = useState(localStorage.getItem("token") ? true : false)
   const { logged, setLogged } = useContext(BoardContext);
-
   const logout = _ => {
     localStorage.removeItem("token")
     setLogged(false)
