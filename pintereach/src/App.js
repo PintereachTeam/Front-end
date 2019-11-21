@@ -8,7 +8,7 @@ import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 
 import { Layout, Icon } from "antd";
-//import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import Modal from "./components/Article";
 import Home from "./components/Home";
 
@@ -18,26 +18,22 @@ function App() {
     <div className="App">
       <header className="App-header">
         <NavBar />
+
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignUpForm} />
-        <Route exact path="/Modal" component={Modal} />
-        <Route path="/home" component={Home} />
+        <PrivateRoute exact path="/Modal" component={Modal} />
+        <PrivateRoute path="/home" component={Home} />
       </header>
 
-      <Footer
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          padding: "auto 50%"
-        }}
-      >
+
+
         <span>Copyright Pintereach 2019</span>{" "}
         <span>
           <a href="https://github.com/PintereachTeam">
             <Icon type="github" />
           </a>
         </span>
-      </Footer>
+
     </div>
   );
 }

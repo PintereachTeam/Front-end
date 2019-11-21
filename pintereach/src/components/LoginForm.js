@@ -43,7 +43,7 @@ const superLoginForm = withFormik({
       .required("Password is required!")
       .min(7, "Password must be 8 characters")
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus,props }) {
     axios
       .post("https://pintereach-backend.herokuapp.com/auth/login", values)
       .then(response => {
@@ -53,6 +53,7 @@ const superLoginForm = withFormik({
         setStatus(response.data);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("id", response.data.id);
+        props.history.push("/home");
       })
       .catch(error => console.log(error));
     setSubmitting(false);
