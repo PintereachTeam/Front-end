@@ -18,13 +18,7 @@ const ArticlesList = () => {
     .catch(error => console.log(error))
   },[]);
 
-  const deleteArticle = id => {
-    axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
-        .then(r => 
-          setArticles(articles.filter(item => item.id !== id))
-          )
-        .catch(err => console.log(err))
-    }
+
 
     const saveArticle = article => {
       setSaved([...saved, article])
@@ -49,7 +43,6 @@ const ArticlesList = () => {
       {articles.map(articles => 
       <ArticleCard 
         key={articles.id} 
-        deleteArticle={deleteArticle} 
         saveArticle={saveArticle}
         article={articles} 
 

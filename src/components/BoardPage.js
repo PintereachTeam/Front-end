@@ -24,6 +24,15 @@ export default function BoardPage(props) {
         })
 
     }, [props.match.params.id])
+
+
+    const deleteArticle = id => {
+        axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
+            .then(r => 
+              setArticles(articles.filter(item => item.id !== id))
+              )
+            .catch(err => console.log(err))
+        }
     
     return (
         <div>
@@ -32,6 +41,7 @@ export default function BoardPage(props) {
             <div key={item.id} className="article-card">
                 <h2>{item.article_label}</h2>
                 <a href={item.url}>{item.url}</a>
+                <button onClick={_ => deleteArticle(item.id)}>Delete Article</button> 
             </div>
             
         )}
