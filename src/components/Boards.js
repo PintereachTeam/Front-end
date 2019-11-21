@@ -11,8 +11,10 @@ const Boards = () => {
     const [adding, setAdding] = useState(false);
     const [editing, setEditing] = useState(false);
 
+    const id = localStorage.getItem("id");
+
     useEffect(()=>{
-    axiosWithAuth().get('https://pintereach-backend.herokuapp.com/boards')
+    axiosWithAuth().get(`https://pintereach-backend.herokuapp.com/boards/${id}`)
     .then(response => {
         setBoards(response.data)
     })

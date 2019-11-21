@@ -16,14 +16,23 @@ export default function BoardPage(props) {
         })
         axiosWithAuth().get(`https://pintereach-backend.herokuapp.com/boards`)
             .then((response) => {
-                setBoardName(response.data.filter(item => item.id == props.match.params.id)[0].board_title);
-                console.log(response.data.filter(item => item.id == props.match.params.id)[0].board_title);
+                setBoardName(response.data.filter(item => item.id === props.match.params.id)[0].board_title);
+                console.log(response.data.filter(item => item.id === props.match.params.id)[0].board_title);
             
         }).catch((error) => {
             console.log(error);
         })
 
     }, [props.match.params.id])
+
+
+    const deleteArticle = id => {
+        axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
+            .then(r => 
+              setArticles(articles.filter(item => item.id !== id))
+              )
+            .catch(err => console.log(err))
+        }
     
     return (
         <div>
@@ -32,6 +41,7 @@ export default function BoardPage(props) {
             <div key={item.id} className="article-card">
                 <h2>{item.article_label}</h2>
                 <a href={item.url}>{item.url}</a>
+                <button onClick={_ => deleteArticle(item.id)}>Delete Article</button> 
             </div>
             
         )}

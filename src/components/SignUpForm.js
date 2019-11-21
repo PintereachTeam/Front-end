@@ -43,13 +43,14 @@ const superSignUpForm = withFormik({
         last_name: Yup.string().required('Last name is required!'),
         email: Yup.string().required('Email address is required!')
     }),
-    handleSubmit(values, {resetForm, setSubmitting, setStatus}){
+    handleSubmit(values, {resetForm, setSubmitting, setStatus, props}){
         axios.post('https://pintereach-backend.herokuapp.com/auth/register', values)
         .then(response => {
             console.log(response);
             resetForm();
             setSubmitting(false);
             setStatus(response.data);
+            props.history.push("/login")
         })
         .catch(error => console.log(error));
         setSubmitting(false);

@@ -19,10 +19,10 @@ const Boards = () => {
 
     console.log(saved)
     return(
-        <div>
+        <div className="read-later-form">
             <h3>Read Later:</h3>
             {saved.map(article => 
-                <div className='article_card'>
+                <div key={article.id} className='article_card'>
                     <h3>{article.article_label}</h3>
                     <a href={article.url}>{article.url}</a>
                     <button onClick={ _ => deleteSaved(article.id)}>I read this!</button>
