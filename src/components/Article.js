@@ -5,7 +5,7 @@ export default function Article() {
  
   return (
     <div className='container'>
-    <ArticlesList/>
+      <ArticlesList/>
     </div>
   );
 }

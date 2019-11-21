@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Route} from 'react-router-dom';
 
 import "./App.css";
@@ -14,7 +14,7 @@ import Modal from "./components/Article";
 import BoardPage from "./components/BoardPage"
 
 //testing
-import AddArticleForm from "./components/AddArticleForm"
+import { BoardContext } from "./contexts/BoardContext";
 
 
 
@@ -24,16 +24,22 @@ import AddArticleForm from "./components/AddArticleForm"
 
 
 function App() {
+  const [boardlist, setBoardList] = useState([]);
   return (
-    <div className="App grey darken-4">
-        <NavBar />
-        <Route path='/login' component={LoginForm}/>
-        <Route path='/signup' component={SignUpForm}/>
-        <Route exact path="/Modal" component={Modal} />
-        <PrivateRoute path='/profile' component={Profile}/>
-        <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
-        <Route exact path='/articles' component={Article}/>
-   </div>
+    <BoardContext.Provider
+      value={{ boardlist, setBoardList }}
+    >
+      <div className="App grey darken-4">
+          <NavBar />
+          <Route path='/login' component={LoginForm}/>
+          <Route path='/signup' component={SignUpForm}/>
+          <Route exact path="/Modal" component={Modal} />
+          <PrivateRoute path='/profile' component={Profile}/>
+          <Route exact path='/articles' component={Article}/>
+          <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
+          
+    </div>
+   </BoardContext.Provider>
 
   );
 }

@@ -4,9 +4,19 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import AddArticleForm from "./AddArticleForm"
 
 const ArticlesList = () => {
-  const [articles, setArticles] = useState([])
+
   const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("savedArticles")));
   const [adding, setAdding] = useState(false)
+
+  const [articles, setArticles] = useState([])
+  useEffect(()=> {
+    axiosWithAuth().get('https://pintereach-backend.herokuapp.com/articles')
+    .then(response => {
+      console.log(response.data)
+      setArticles(response.data)
+    })
+    .catch(error => console.log(error))
+  },[]);
 
   const deleteArticle = id => {
     axiosWithAuth().delete(`https://pintereach-backend.herokuapp.com/articles/${id}`)
@@ -27,14 +37,7 @@ const ArticlesList = () => {
     
 
 
-  useEffect(()=> {
-    axiosWithAuth().get('https://pintereach-backend.herokuapp.com/articles')
-    .then(response => {
-      console.log(response.data)
-      setArticles(response.data)
-    })
-    .catch(error => console.log(error))
-  },[]);
+
 
   return( 
     <>
