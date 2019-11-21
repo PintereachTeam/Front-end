@@ -10,7 +10,7 @@ const LoginForm = ({touched, errors, isSubmitting, values }) => {
     return(
         <div style={{height:'100vh', width: '100%', background: 'black', position: 'absolute', zIndex: '-1'}}>
             <img src={background} alt='libraryimage' style={{width: '100%',height: '100vh', position:'absolute' , zIndex:'-1', right:'0%', opacity: '0.8' }}/>
-        <div className='login_form container deep-purple darken-3' style={{width: '30%', height: '300px', margin: '70px auto', padding:'80px'}}>
+        <div className='login_form container deep-purple darken-3' style={{width: '30%', height: '370px', margin: '70px auto', padding:'80px', borderRadius:'10px'}}>
             <Form>
             <h2 style={{color:'white', fontSize:'30px', marginBottom:'15px'}}>Welcome to Pinterech</h2>
                 <Field style={{textAlign: 'center', width: '80%'}} type='text' name='username' placeholder='Username' value={values.username} />
@@ -18,7 +18,7 @@ const LoginForm = ({touched, errors, isSubmitting, values }) => {
                 {touched.username && errors.username && (<p>{errors.name}</p>)}
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
                 <br/>
-                <button className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login
+                <button style={{margin: '15px'}} className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login
                 <i className="material-icons right">send</i>
                 </button>
             </Form>
