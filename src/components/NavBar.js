@@ -15,15 +15,15 @@ const NavBar = (props) => {
     <nav className="deep-purple darken-3">
     <div className='nav-wrapper #7804eb lighten-2' style={{display:'flex', justifyContent: 'space-between', width: '100%'}}>
      <div>
-      <NavLink to="/login"><img className="brand-logo left" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} /></NavLink>
+      <NavLink to="/login"><img className="brand-logo left" src={logo} alt='pinterech_logo' style={{width:50 , height: 50, margin: '5px'}} /></NavLink>
       </div>
-       <div style={{display: 'flex', justifyContent: 'space-between', width: 500}}>
+       <div style={{display: 'flex', justifyContent: 'space-around', width: 500, marginRight: '25px', fontSize: '1.5rem'}}>
  
        {localStorage.getItem("token") 
         ? <NavLink onClick={logout} to="/login" >Logout</NavLink> 
-        : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" ></NavLink>
+        : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" >
 
-        <NavLink to="/login" >
+       
 
           Login
         </NavLink></>}
