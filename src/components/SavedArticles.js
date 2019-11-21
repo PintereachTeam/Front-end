@@ -25,7 +25,7 @@ const Boards = () => {
                 <div className='article_card'>
                     <h3>{article.article_label}</h3>
                     <a href={article.url}>{article.url}</a>
-                    <button onClick={ _ => deleteSaved(article.id)}>Delete Article</button>
+                    <button onClick={ _ => deleteSaved(article.id)}>I read this!</button>
                     
                 </div>)}
         </div>
