@@ -19,7 +19,7 @@ const Boards = () => {
 
     console.log(saved)
     return(
-        <div>
+        <div className="read-later-form">
             <h3>Read Later:</h3>
             {saved.map(article => 
                 <div className='article_card'>
