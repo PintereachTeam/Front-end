@@ -7,7 +7,7 @@ const NavBar = () => {
     <div
       style={{ width: "30%", display: "flex", justifyContent: "space-between", alignContent: 'start', color: 'white', textDecoration: 'none' }}
     >
-      
+      <img src='/src/img/icon_white.png' alt='pinterech_logo'/>
         <NavLink to="/signup" className="NavBtn">
           Signup
         </NavLink>

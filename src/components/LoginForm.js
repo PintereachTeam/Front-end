@@ -7,13 +7,13 @@ const LoginForm = ({touched, errors, isSubmitting, values }) => {
 
   
     return(
-        <div className='login_form'>
+        <div className='login_form container'>
             <Form>
                 <Field type='text' name='username' placeholder='Username' value={values.username} />
                 {touched.username && errors.username && (<p>{errors.name}</p>)}
                 <Field type='password' placeholder='password' name='password' value={values.password} />
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
-                <button type='submit' disabled={isSubmitting}>Login</button>
+                <button className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login</button>
             </Form>
         </div>
     )
