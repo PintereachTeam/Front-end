@@ -107,10 +107,12 @@ button:focus {
 }
 
 .boards-card {
-  width:60%;
-  margin:0 auto;
+  width:100%;
+  margin:2% auto;
   text-align:center;
   height:100%;
+
+  
 }
 
 .saved-article {
@@ -121,3 +123,40 @@ button:focus {
   margin: 1% auto;
 }
 
+.read-later-form h1 {
+  color:white;
+  font-size:2.5rem;
+  font-weight:bold;
+  padding: 10px 0px;
+}
+
+.boards-list {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
+
+.boards-list a{
+  width:30%;
+}
+img {
+  max-width:100%;
+}
+.saved-article {
+  width:500px;
+  margin:0 auto;
+  text-align:center;
+  height:100%;
+  margin: 1% auto;
+ 
+}
+.saved-list {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+
+}
+
+input {
+  color:white;
+}

@@ -27,9 +27,11 @@ const Boards = () => {
         
         <div className="profile-boards-list">
             <button onClick={_ => setAdding(!adding)}>{!adding ? "Add a Board" : "Close"}</button>
-            <h1>My Boards</h1>
+           
             
             {adding ? <AddBoardForm boards={boards} setBoards={setBoards} /> : null}
+            <h1>My Boards</h1>
+            <div className="boards-list">
             {boards.length > 0 ? boards.map(boards => 
             <Link key={boards.id} to={`articles/${boards.id}`}>
                 <div className="col s12 m6 boards-card">
@@ -47,6 +49,7 @@ const Boards = () => {
                 </div>
             </Link>)
             : <h5></h5>}
+            </div>
         </div>
         
         
