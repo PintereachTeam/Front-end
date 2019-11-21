@@ -16,7 +16,7 @@ const NavBar = (props) => {
       <img className="left brand-logo" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} />
        <div className="right hide-on-med-and-down">
         {localStorage.getItem("token") 
-        ? <NavLink onClick={logout} to="/" >Logout</NavLink> 
+        ? <NavLink onClick={logout} to="/login" >Logout</NavLink> 
         : <><NavLink to="/signup" >Signup</NavLink><NavLink to="/login" >
           Login
         </NavLink></>}
