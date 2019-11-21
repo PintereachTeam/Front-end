@@ -15,7 +15,7 @@ const NavBar = (props) => {
     <nav>
     <div className='nav-wrapper #7804eb lighten-2' style={{display:'flex', justifyContent: 'space-between', width: '100%'}}>
      <div>
-      <img className="brand-logo left" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} />
+      <NavLink to="/login"><img className="brand-logo left" src={logo} alt='pinterech_logo' style={{width:50 , height: 50}} /></NavLink>
       </div>
        <div style={{display: 'flex', justifyContent: 'space-between', width: 500}}>
        {localStorage.getItem("token") 

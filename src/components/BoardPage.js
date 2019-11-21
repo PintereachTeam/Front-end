@@ -16,8 +16,8 @@ export default function BoardPage(props) {
         })
         axiosWithAuth().get(`https://pintereach-backend.herokuapp.com/boards`)
             .then((response) => {
-                setBoardName(response.data.filter(item => item.id == props.match.params.id)[0].board_title);
-                console.log(response.data.filter(item => item.id == props.match.params.id)[0].board_title);
+                setBoardName(response.data.filter(item => item.id === props.match.params.id)[0].board_title);
+                console.log(response.data.filter(item => item.id === props.match.params.id)[0].board_title);
             
         }).catch((error) => {
             console.log(error);
