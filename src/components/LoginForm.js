@@ -41,7 +41,7 @@ const superLoginForm = withFormik({
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("id", response.data.id);
             if (!localStorage.getItem("savedArticles")) {
-                localStorage.setItem("savedArticles", [])
+                localStorage.setItem("savedArticles", JSON.stringify([]))
             }
             props.history.push("/profile")
 
