@@ -25,16 +25,30 @@ const Boards = () => {
         //want to return board name
         //return a list of articles assigned to board
         
-        <div>
-            
-            <h1>My Boards</h1>
+        <div className="profile-boards-list">
             <button onClick={_ => setAdding(!adding)}>{!adding ? "Add a Board" : "Close"}</button>
+            <h1>My Boards</h1>
+            
             {adding ? <AddBoardForm boards={boards} setBoards={setBoards} /> : null}
-            {boards.map(boards => 
+            {boards.length > 0 ? boards.map(boards => 
             <Link key={boards.id} to={`articles/${boards.id}`}>
-                <Board key={boards.id} board={boards}/>
-            </Link>)}
+                <div className="col s12 m6 boards-card">
+                    <div className="card #4db6ac teal lighten-2">
+                        <div className="card-content white-text">
+                            <Board key={boards.id} board={boards}/>
+                            <img src={`https://picsum.photos/300/200?random=${boards.id}`}/>
+                        </div>
+                    <div className="card-action">
+                        <button>Delete Board</button>
+                    </div>
+
+                    </div>
+
+                </div>
+            </Link>)
+            : <h5></h5>}
         </div>
+        
         
         
     )

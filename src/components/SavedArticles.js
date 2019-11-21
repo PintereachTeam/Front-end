@@ -8,6 +8,7 @@ const Boards = () => {
     const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("savedArticles")))
 
     useEffect(()=>{
+        console.log(saved)
 },[]);
 
     const deleteSaved = (id) => {
@@ -20,14 +21,25 @@ const Boards = () => {
     console.log(saved)
     return(
         <div className="read-later-form">
-            <h3>Read Later:</h3>
+            {saved.length >0
+            ? <h3>Read Later:</h3>
+            : null}
             {saved.map(article => 
-                <div key={article.id} className='article_card'>
-                    <h3>{article.article_label}</h3>
-                    <a href={article.url}>{article.url}</a>
-                    <button onClick={ _ => deleteSaved(article.id)}>I read this!</button>
+                <div className="col s12 m6">
+                <div className="card #4db6ac teal lighten-2 saved-article">
+                  <div className="card-content white-text">
+                    <span className="card-title">{article.article_label}</span>
+                    <img src={`https://picsum.photos/300/200?random=${article.id}`}/>
+                  </div>
+                  <div className="card-action">
                     
-                </div>)}
+                    <a className='deep-purple-text text-darken-4' href={article.url}>View Article</a>
+                    <button onClick={ _ => deleteSaved(article.id)}>I read this!</button>
+                  </div>
+        
+                </div>
+        
+              </div>)}
         </div>
         
     )

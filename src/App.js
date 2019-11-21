@@ -39,7 +39,7 @@ function App() {
           <Route exact path="/Modal" component={Modal} />
           <PrivateRoute path='/profile' component={Profile}/>
           <PrivateRoute exact path='/articles' component={Article}/>
-          <PrivateRoute path="/articles/:id" render={props => <BoardPage {...props}/>}/>
+          <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
           
     </div>
    </BoardContext.Provider>

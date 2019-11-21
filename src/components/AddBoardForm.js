@@ -34,7 +34,7 @@ export default function AddBoardForm({boards, setBoards}) {
 
     return (
         <div className="add-board-form">
-        <h3>Add an Board to our Database:</h3> 
+        <h3>Add a Board to our Database:</h3> 
         <form onSubmit={handleSubmit}>
             <input
                 onChange={handleChange}
