@@ -18,7 +18,9 @@ const LoginForm = ({touched, errors, isSubmitting, values }) => {
                 {touched.username && errors.username && (<p>{errors.name}</p>)}
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
                 <br/>
-                <button className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login</button>
+                <button className="waves-effect waves-light btn" type='submit' disabled={isSubmitting}>Login
+                <i className="material-icons right">send</i>
+                </button>
             </Form>
         </div>
         </div>
