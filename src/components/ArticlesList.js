@@ -36,11 +36,13 @@ const ArticlesList = () => {
     .catch(error => console.log(error))
   },[]);
 
-  return(
-    <div>
-      <h1>Articles</h1>
-      <button onClick={_ => setAdding(!adding)}>{!adding ? "Add New Article" : "Close"}</button>
+  return( 
+    <>
+    <button onClick={_ => setAdding(!adding)}>{!adding ? "Add New Article" : "Close"}</button>
             {adding ? <AddArticleForm articles={articles} setArticles={setArticles} /> : null}
+    <div className='row'>
+      <h1>Articles</h1>
+      
       {articles.map(articles => 
       <ArticleCard 
         key={articles.id} 
@@ -50,6 +52,7 @@ const ArticlesList = () => {
 
         />)}
     </div>
+    </>
   )
 }
 export default ArticlesList;

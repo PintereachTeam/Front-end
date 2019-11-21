@@ -31,3 +31,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .App-link {
   color: #09d3ac;
 }
+
+.card {
+  height: 400px;
+}
