@@ -31,7 +31,7 @@ const superLoginForm = withFormik({
         username: Yup.string().required('Username is required!'),
         password: Yup.string().required('Password is required!').min(7, 'Password must be 8 characters')
     }),
-    handleSubmit(values, {resetForm, setSubmitting, setStatus}){
+    handleSubmit(values, {resetForm, setSubmitting, setStatus, props}){
         axios.post('https://pintereach-backend.herokuapp.com/auth/login', values)
         .then(response => {
             console.log(response);
@@ -40,7 +40,11 @@ const superLoginForm = withFormik({
             setStatus(response.data);
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("id", response.data.id);
-            localStorage.getItem("savedArticles") ? null : localStorage.setItem("savedArticles", [])
+            if (!localStorage.getItem("savedArticles")) {
+                localStorage.setItem("savedArticles", [])
+            }
+            props.history.push("/profile")
+
         })
         .catch(error => console.log(error));
         setSubmitting(false);
