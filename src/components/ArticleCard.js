@@ -1,14 +1,23 @@
 import React from "react";
+import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 
 
 const ArticleCard = props => {
-  const article = props.article
+  const article = props.article;
+  
+
+
+
+  
 
     return(
+
       // <div className='card col s6'>
-      //   <h3>{article.article_label}</h3>
-      //   <a href={article.url}>{article.url}</a>
+      //  <h3>{article.article_label}</h3>
+      //  <a href={article.url}>{article.url}</a>
+      //  <button onClick={ _ => props.deleteArticle(article.id)}>Delete Article</button>
+          
       // </div>
 
       <div className="col s12 m6">
@@ -21,8 +30,11 @@ const ArticleCard = props => {
           <div className="card-action">
             
             <a className='deep-purple-text text-darken-4' href={article.url}>View Article</a>
+            <button onClick={ _ => props.saveArticle(article)}>Save Article</button>
           </div>
+
         </div>
+
       </div>
 
     )

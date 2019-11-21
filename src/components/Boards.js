@@ -14,7 +14,6 @@ const Boards = () => {
     useEffect(()=>{
     axiosWithAuth().get('https://pintereach-backend.herokuapp.com/boards')
     .then(response => {
-        console.log('hello form inside axios',response.data)
         setBoards(response.data)
     })
     .catch(error => console.log(error))
@@ -28,9 +27,9 @@ const Boards = () => {
             
             <h1>My Boards</h1>
             <button onClick={_ => setAdding(!adding)}>{!adding ? "Add a Board" : "Close"}</button>
-            {adding ? <AddBoardForm /> : null}
+            {adding ? <AddBoardForm boards={boards} setBoards={setBoards} /> : null}
             {boards.map(boards => 
-            <Link to={`articles/${boards.id}`}>
+            <Link key={boards.id} to={`articles/${boards.id}`}>
                 <Board key={boards.id} board={boards}/>
             </Link>)}
         </div>

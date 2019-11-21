@@ -27,13 +27,12 @@ function App() {
   return (
     <div className="App grey darken-4">
         <NavBar />
-        <AddArticleForm />
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
         <Route exact path="/Modal" component={Modal} />
         <PrivateRoute path='/profile' component={Profile}/>
         <Route path="/articles/:id" render={props => <BoardPage {...props}/>}/>
-        <Route path='/articles' component={Article}/>
+        <Route exact path='/articles' component={Article}/>
    </div>
 
   );
