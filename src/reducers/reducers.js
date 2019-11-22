@@ -3,7 +3,7 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  SIGNUP_START
+  REGISTER_START
 } from "../actions/actions.js";
 
 // STATE
@@ -12,14 +12,14 @@ const initialState = {};
 
 // REDUCER
 
-const reducer = (state = initialState, action) => {
+const reducers = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       return {
         ...state,
         loggingIn: true
       };
-    case SIGNUP_START:
+    case REGISTER_START:
       return {
         ...state,
         loggingIn: true,
@@ -36,4 +36,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default reducers;
