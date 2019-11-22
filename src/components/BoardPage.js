@@ -36,7 +36,7 @@ export default function BoardPage(props) {
     
     return (
         <div>
-        <h1>{boardName}</h1>
+        <h1>{id}: {boardName}</h1>
         {articles.map(article =>
             <div className="col s12 m6">
             <div className="card #4db6ac teal lighten-2">
