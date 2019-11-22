@@ -33,7 +33,7 @@ function App() {
     >
       <div className="App grey darken-4">
           <NavBar />
-          <Route exact path='/' component={LoginForm}/>
+          <Route exact path='/' component={SignUpForm}/>
           <Route path='/login' component={LoginForm}/>
           <Route path='/signup' component={SignUpForm}/>
           <Route exact path="/Modal" component={Modal} />
