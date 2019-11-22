@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import kevin from "../img/kevinglasses.png"
 
 export default function BoardPage(props) {
     const id = props.match.params.id;
@@ -37,12 +38,15 @@ export default function BoardPage(props) {
     return (
         <div>
         <h1>{id}: {boardName}</h1>
+            <div className="boards-list">
         {articles.map(article =>
-            <div className="col s12 m6">
+            <div className="col s12 m6 boards-card">
             <div className="card #4db6ac teal lighten-2">
               <div className="card-content white-text">
                 <span className="card-title">{article.article_label}</span>
-                <img src={`https://picsum.photos/300/200?random=${article.id}`}/>
+                {article.id === 17 
+                ? <img src={kevin}></img>
+                : <img src={`https://picsum.photos/300/200?random=${article.id}`}/>}
               </div>
               <div className="card-action">
                 
@@ -53,9 +57,10 @@ export default function BoardPage(props) {
             </div>
     
           </div>
-    
+        
             
             )}
+            </div>
         </div>)
 
 }
