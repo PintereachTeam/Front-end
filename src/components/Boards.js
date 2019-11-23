@@ -13,10 +13,11 @@ const Boards = () => {
   const [board, setBoard] = useState([]);
   const [updateArticle, setUpdateArticle] = useState([]);
   const [state, dispatch] = useReducer(articleReducer);
+  const [props, setProps] = useState([]);
 
   const id = localStorage.getItem("id");
 
-  useEffect(() => {
+  useEffect(props => {
     axiosWithAuth()
       .get(`https://pintereach-backend.herokuapp.com/boards/${id}`)
       .then(response => {
@@ -47,7 +48,9 @@ const Boards = () => {
           <Board key={boards.id} board={boards} />
         </Link>
       ))}
-
+      <button className="btn" onClick={props.clearCompleted}>
+        Clear Completed Boards Found
+      </button>
     </div>
   );
 };
