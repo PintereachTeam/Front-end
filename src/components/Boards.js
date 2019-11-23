@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Board from "./Board";
 import AddBoardForm from "./AddBoardForm";
 import { Link } from "react-router-dom";
-import { articleReducer } from "../reducers/index.js";
 
 const Boards = () => {
   // const [articles, setArticles] = useState([])
@@ -12,12 +11,10 @@ const Boards = () => {
   const [editing, setEditing] = useState(false);
   const [board, setBoard] = useState([]);
   const [updateArticle, setUpdateArticle] = useState([]);
-  const [state, dispatch] = useReducer(articleReducer);
-  const [props, setProps] = useState([]);
 
   const id = localStorage.getItem("id");
 
-  useEffect(props => {
+  useEffect(() => {
     axiosWithAuth()
       .get(`https://pintereach-backend.herokuapp.com/boards/${id}`)
       .then(response => {
@@ -48,9 +45,7 @@ const Boards = () => {
           <Board key={boards.id} board={boards} />
         </Link>
       ))}
-      <button className="btn" onClick={props.clearCompleted}>
-        Clear Completed Boards Found
-      </button>
+
     </div>
   );
 };

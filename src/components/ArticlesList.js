@@ -8,7 +8,7 @@ export const ArticlesList = () => {
     JSON.parse(localStorage.getItem("savedArticles"))
   );
   const [adding, setAdding] = useState(false);
-  const [props, setProps] = useState;
+
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     axiosWithAuth()
@@ -45,9 +45,7 @@ export const ArticlesList = () => {
             article={articles}
           />
         ))}
-        <button className="btn" onClick={props.clearCompleted}>
-          Clear Completed Articles Found
-        </button>
+
       </div>
     </>
   );
