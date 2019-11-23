@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import axios from "axios";
 
+export const DELETE_ARTICLE_START = "DELETE_START";
+export const DELETE_ARTICLE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_ARTICLE_FAILURE = "DELETE_FAILURE";
 export default function BoardPage(props) {
   const id = props.match.params.id;
   const [articles, setArticles] = useState([]);
@@ -56,6 +59,7 @@ export default function BoardPage(props) {
         <div key={item.id} className="article-card">
           <h2>{item.article_label}</h2>
           <a href={item.url}>{item.url}</a>
+          <button onClick={item.delete} />
         </div>
       ))}
     </div>

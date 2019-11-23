@@ -1,0 +1,11 @@
+.task.completed {
+    text-decoration: Underline;
+}
+
+body {
+    color: red;
+    background-color: purple;
+
+
+    font-size: 2.5rem;
+}

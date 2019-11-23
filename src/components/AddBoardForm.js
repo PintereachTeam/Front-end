@@ -14,18 +14,18 @@ export default function AddBoardForm({boards, setBoards}) {
         e.preventDefault()
         axiosWithAuth().post("https://pintereach-backend.herokuapp.com/boards/", newBoard)
             .then(r => {console.log(r)
-                setBoards([...boards, newBoard])  
+                setBoards([...boards, newBoard])
                 setNewBoard({
                     board_title: "",
                     user_id: Number(localStorage.getItem("id"))
                 })
-                
+
             })
             .catch(err => console.log(err))
 
     };
     const handleChange = e => {
-        setNewBoard({ 
+        setNewBoard({
             ...newBoard,
             [e.target.name]: e.target.value,
          })
@@ -33,17 +33,18 @@ export default function AddBoardForm({boards, setBoards}) {
 
 
     return (
-        <div className="add-board-form">
-        <h3>Add an Board to our Database:</h3> 
+      <div className="add-board-form">
+        <h3>Add a Board to our Database:</h3>
         <form onSubmit={handleSubmit}>
-            <input
-                onChange={handleChange}
-                placeholder="Board Title"
-                value={newBoard.board_title}
-                name="board_title"
-            />
-        <button type="submit">Post Board</button> 
+          <input
+            onChange={handleChange}
+            placeholder="Board Title"
+            value={newBoard.board_title}
+            name="board_title"
+          />
+          <button onClick="submit">Post Board</button>
+          <button onClick="remove.item">delete</button>
         </form>
-    </div>
-    )
+      </div>
+    );
 }
