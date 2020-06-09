@@ -5,7 +5,7 @@ import axios from "axios";
 // EXPORTS
 
 export const LOGIN_START = "LOGIN_START";
-export const SIGNUP_START = "SIGNUP_START";
+export const REGISTER_START = "REGISTER_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
 // LOGIN ACTION '.POST'
@@ -24,13 +24,13 @@ export const login = creds => dispatch => {
 
 // SIGNUP ACTION '.POST'
 
-export const signup = creds => dispatch => {
-  dispatch({ type: SIGNUP_START });
+export const register = creds => dispatch => {
+  dispatch({ type: REGISTER_START });
   return axios
     .post("https://pintereach-backend.herokuapp.com/register", creds) //  <- ADD PATH
     .then(res => {
       return axios
-        .post("https://pintereach-backend.herokuapp.com//login", creds) //  <- ADD PATH
+        .post("https://pintereach-backend.herokuapp.com/login", creds) //  <- ADD PATH
         .then(res => {
           localStorage.setItem("token", res.data.token);
           dispatch({ type: LOGIN_SUCCESS, payload: res.data });
@@ -127,12 +127,12 @@ export const deleteBoardUser = Board => dispatch => {
 
 // DELETE ARTICLE
 
-export const DELETE_START = "DELETE_START";
-export const DELETE_SUCCESS = "DELETE_SUCCESS";
-export const DELETE_FAILURE = "DELETE_FAILURE";
+export const DELETE_ARTICLE_START = "DELETE_START";
+export const DELETE_ARTICLE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_ARTICLE_FAILURE = "DELETE_FAILURE";
 
 export const deleteArticle = article => dispatch => {
-  dispatch({ type: DELETE_START });
+  dispatch({ type: DELETE_ARTICLE_START });
   axios
     .delete(`pintereach-backend.herokuapp.com//articles/${article.articleId}`, {
       // <- ADD PATH
@@ -143,7 +143,7 @@ export const deleteArticle = article => dispatch => {
     })
 
     .catch(err => {
-      dispatch({ type: DELETE_FAILURE, payload: err.response });
+      dispatch({ type: DELETE_ARTICLE_FAILURE, payload: err.response });
     });
 };
 

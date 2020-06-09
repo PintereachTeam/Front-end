@@ -1,81 +1,28 @@
-import React, { useState } from "react";
-import { Modal, Form, Input, Button } from "antd";
+import React from "react";
+import axios from "axios";
+import { getAllData, deleteArticle } from "../actions/actions";
 
-export default function Article(props) {
-  const { hideModal, addArticle, modalDisplay } = props;
+class Article extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Articles: ""
+    };
+  }
 
-  const initialFormState = {
-    articleid: "",
-    link: "",
-    title: "",
-    summary: "",
-    board: ""
+  deleteArticle = (id, user_id) => {
+    this.setState({ deletingArticle: id });
+    this.props.deleteArticle(id, user_id);
   };
-
-  // State to handle content of article form
-
-  const [article, setArticle] = useState(initialFormState);
-
-  const handleInputChange = e => {
-    const { name, value } = e.target;
-    setArticle({ ...article, [name]: value });
-    console.log(article);
-  };
-
-  const clickAddArticle = e => {
-    e.preventDefault();
-    addArticle(article);
-    setArticle(initialFormState);
-  };
-
-  return (
-    <>
-      <Modal
-        title="Add New Article"
-        visible={modalDisplay.visible}
-        onCancel={hideModal}
-        footer={[
-          <Button
-            form="articleForm"
-            key="submit"
-            htmlType="submit"
-            onClick={clickAddArticle}
-          >
-            Add Article
-          </Button>
-        ]}
-      >
-        <Form>
-          <label htmlFor="URL">URL</label>
-          <Input
-            type="text"
-            name="link"
-            value={article.link}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="title">Title</label>
-          <Input
-            type="text"
-            name="title"
-            value={article.title}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="summary">Summary</label>
-          <Input
-            type="text"
-            name="summary"
-            value={article.summary}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="category">Tags</label>
-          <Input
-            type="text"
-            name="category"
-            value={article.category}
-            onChange={handleInputChange}
-          />
-        </Form>
-      </Modal>
-    </>
-  );
+  render() {
+    return (
+      <div className="articles">
+        {this.props.articles.map(article => (
+          <div className="article-card" key={article.id}></div>
+        ))}
+      </div>
+    );
+  }
 }
+
+export default Article;
